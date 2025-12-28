@@ -4,18 +4,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the app...'
+                echo 'Building...'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-            }
+    }
+
+    post {
+        success {
+            emailext subject: 'Build SUCCESS: ${JOB_NAME}',
+                     body: 'Job ${JOB_NAME} build #${BUILD_NUMBER} was successful.',
+                     to: 'rajiulhaque658@gmail.com'
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
-            }
+        failure {
+            emailext subject: 'Build FAILURE: ${JOB_NAME}',
+                     body: 'Job ${JOB_NAME} build #${BUILD_NUMBER} failed.',
+                     to: 'rajiulhaque658@gmail.com'
         }
     }
 }
