@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+   agent any
     parameters{
         string(name: 'version', defaultValue: '1.0.1', description: 'version')
         choice(name: 'environment', choices: ['dev', 'stage', 'prod'], description: 'chose an step')
@@ -10,19 +10,23 @@ pipeline{
                 echo "building image. version - ${params.version}"
             }
         }
-        stage('environment selection'){
+        stage('dev env'){
             when{
                 expression {params.environment == 'dev'}
             }
             steps{
                 echo "dev environment"
             }
+        }
+        stage('staging env'){
             when{
                 expression {params.environment == 'stage'}
             }
             steps{
                 echo "stage environment"
             }
+        }
+        stage('production env'){
             when{
                 expression {params.environment == 'prod'}
             }
