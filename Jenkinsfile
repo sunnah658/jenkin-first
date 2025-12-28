@@ -36,12 +36,12 @@ pipeline{
         }
     }
     post{
-        SUCCESS {
+        success {
             emailext subject: 'Build SUCCESS: ${JOB_NAME}',
                 body: 'job ${JOB_NAME} build #${BUILD_NUMBER} was success',
                 to: 'rajiulhaque658@gmail.com'
         }
-        FAILURE {
+        failure {
             emailext subject: 'Build FAILURE: ${JOB_NAME}',
                 body: 'job ${JOB_NAME} build #${BUILD_NUMBER} was failed',
                 to: 'rajiulhaque658@gmail.com'
