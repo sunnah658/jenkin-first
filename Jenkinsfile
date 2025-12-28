@@ -35,12 +35,12 @@ pipeline{
         SUCCESS{
             emailxt subject: 'Build SUCCESS: ${JOB_NAME}',
                 body: 'job ${JOB_NAME} build #${BUILD_NUMBER} was success',
-                to: 'rajiulhaque658@gmail.com
+                to: 'rajiulhaque658@gmail.com'
         }
         FAILURE{
             emailxt subject: 'Build FAILURE: ${JOB_NAME}',
                 body: 'job ${JOB_NAME} build #${BUILD_NUMBER} was failed',
-                to: 'rajiulhaque658@gmail.com
+                to: 'rajiulhaque658@gmail.com'
         }
     }
 }
